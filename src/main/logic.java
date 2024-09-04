@@ -1,3 +1,5 @@
+package Main;
+
 public class logic {
 
         // Converts a quaternary string to an integer
@@ -46,4 +48,3 @@ public class logic {
         }
 
     }
-
