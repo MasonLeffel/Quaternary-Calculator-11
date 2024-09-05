@@ -33,17 +33,17 @@
          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="132.0" text="0" GridPane.rowIndex="2">
+         <Button mnemonicParsing="false" onAction="#onZeroButtonClick" prefHeight="76.0" prefWidth="132.0" text="0" GridPane.rowIndex="2">
             <font>
                <Font size="26.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="132.0" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <Button mnemonicParsing="false" onAction="#onTwoButtonClick" prefHeight="76.0" prefWidth="132.0" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <font>
                <Font size="26.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="132.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <Button mnemonicParsing="false" onAction="#onOneButtonClick" prefHeight="76.0" prefWidth="132.0" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <font>
                <Font size="26.0" />
             </font>
@@ -68,7 +68,7 @@
                <Font size="26.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" prefHeight="76.0" prefWidth="132.0" text="3" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <Button mnemonicParsing="false" onAction="#onThreeButtonClick" prefHeight="76.0" prefWidth="132.0" text="3" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <font>
                <Font size="26.0" />
             </font>
