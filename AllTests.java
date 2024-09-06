@@ -66,4 +66,24 @@ public class AllTests {
         String result = calc.divide(testFirstNum, testSecondNum);
         Assertions.assertEquals(expectedVar, result);
     }
+
+    @Test
+    public void testSquareRoot(){
+        String testNum = "21";
+        String expectedVar = "3";
+
+        logic calc = new logic();
+        String result = calc.squareRoot(testNum);
+        Assertions.assertEquals(expectedVar, result);
+    }
+
+    @Test
+    public void testSquare(){
+        String testNum = "2";
+        String expectedVar = "10";
+        
+        logic calc = new logic();
+        String result = calc.square(testNum);
+        Assertions.assertEquals(expectedVar, result);
+    }
 }
