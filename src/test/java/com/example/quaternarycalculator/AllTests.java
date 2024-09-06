@@ -1,8 +1,6 @@
 package com.example.quaternarycalculator;
 
-import com.example.quaternarycalculator.logic;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 
@@ -69,6 +67,26 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.divide(testFirstNum, testSecondNum);
+        assertEquals(expectedVar, result);
+    }
+
+    @Test
+    public void testSquareRoot(){
+        String testNum = "21";
+        String expectedVar = "3";
+
+        logic calc = new logic();
+        String result = calc.squareRoot(testNum);
+        assertEquals(expectedVar, result);
+    }
+
+    @Test
+    public void testSquare(){
+        String testNum = "2";
+        String expectedVar = "10";
+
+        logic calc = new logic();
+        String result = calc.square(testNum);
         assertEquals(expectedVar, result);
     }
 }
