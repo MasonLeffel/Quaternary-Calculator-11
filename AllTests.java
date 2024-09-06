@@ -1,8 +1,5 @@
-package Tests;
-import Logic.logic;
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class AllTests {
 
@@ -13,7 +10,7 @@ public class AllTests {
 
         logic calc = new logic();
         Integer result = calc.quaternaryToDecimal(testVar);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
@@ -23,7 +20,7 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.decimalToQuaternary(testVar);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
@@ -34,7 +31,7 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.add(testFirstNum, testSecondNum);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
@@ -45,7 +42,7 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.subtract(testFirstNum, testSecondNum);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
@@ -56,7 +53,7 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.multiply(testFirstNum, testSecondNum);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
@@ -67,7 +64,7 @@ public class AllTests {
 
         logic calc = new logic();
         String result = calc.divide(testFirstNum, testSecondNum);
-        assertEquals(expectedVar, result);
+        Assertions.assertEquals(expectedVar, result);
     }
 
     @Test
