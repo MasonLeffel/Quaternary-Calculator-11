@@ -44,6 +44,17 @@ public class logic {
             int result = dec1 / dec2;
             return decimalToQuaternary(result);
         }
-
+         public String squareRoot(String quaternary) {
+        int decimal = quaternaryToDecimal(quaternary);  // Convert to decimal
+        int sqrtResult = (int) Math.sqrt(decimal);      // Take square root and truncate to integer
+        return decimalToQuaternary(sqrtResult);         // Convert back to quaternary
     }
+        public String exponent(String base, String exponent) {
+            int baseDecimal = quaternaryToDecimal(base);           // Convert base to decimal
+            int exponentDecimal = quaternaryToDecimal(exponent);   // Convert exponent to decimal
+            int result = (int) Math.pow(baseDecimal, exponentDecimal);  // Perform exponentiation
+            return decimalToQuaternary(result);                    // Convert back to quaternary
+    }
+}
+
 
