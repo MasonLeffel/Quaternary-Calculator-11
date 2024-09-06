@@ -2,6 +2,7 @@ package com.example.quaternarycalculator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.FileWriter;
@@ -10,6 +11,15 @@ import java.io.IOException;
 public class CalculatorController extends logic {
     @FXML
     private Label welcomeText;
+    @FXML
+    private Button toggleButton;
+
+    private String num1 = "";
+    private String num2 = "";
+    private String operand = "";
+
+    //TODO
+    // when equal pressed, set val to num1
 
     private boolean isNumQuaternary = true;
 
@@ -25,12 +35,22 @@ public class CalculatorController extends logic {
         }
     }
 
+    protected void numberChoice(String number){
+        if (operand.equals("")){
+            num1 += number;
+            welcomeText.setText(num1);
+        }else {
+            num2 += number;
+            welcomeText.setText(num2);
+        }
+    }
+
     @FXML
     protected void onClearButtonClick() throws IOException {
-
+        num1 = "";
+        num2 = "";
+        operand = "";
         welcomeText.setText("");
-        inputString = " ";
-        writer.write("");
     }
 
     @FXML
@@ -43,10 +63,12 @@ public class CalculatorController extends logic {
             if (isNumQuaternary) {
                 newText = String.valueOf(quaternaryToDecimal(welcomeText.getText().strip()));
                 welcomeText.setText(newText);
+                toggleButton.setText("Decimal");
                 isNumQuaternary = false;
             } else {
                 newText = decimalToQuaternary(Integer.parseInt(welcomeText.getText().strip()));
                 welcomeText.setText(newText);
+                toggleButton.setText("Quaternary");
                 isNumQuaternary = true;
             }
         }catch (Exception e){
@@ -54,120 +76,74 @@ public class CalculatorController extends logic {
         }
     }
 
-//    Upon operation button click, store first number and operand locally.
-//    When equal is clicked refer back to them. Clear the local variables at the end of onEqualButtonClick() to avoid overlapping operations.
-//    Could also clear local variables when onClearButtonClick() is pressed
-
     @FXML
     protected void onAddButtonClick(){
-        inputString = inputString + "+";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("+");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("")){
+            welcomeText.setText("+");
+            operand = "+";
         }
     }
 
     @FXML
     protected void onSubtractionButtonClick(){
-        inputString = inputString + "-";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("-");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("")){
+            welcomeText.setText("-");
+            operand = "-";
         }
     }
 
     @FXML
     protected void onAddMultiplicationClick(){
-        inputString = inputString + "*";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("*");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("")){
+            welcomeText.setText("*");
+            operand = "*";
         }
     }
 
     @FXML
     protected void onDivisionButtonClick(){
-        inputString = inputString + "/";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("/");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("")){
+            welcomeText.setText("/");
+            operand = "/";
         }
     }
 
     @FXML
     protected void onEqualButtonClick() throws IOException {
 
-        // close writer on equal causes errors, can we change "writer.close();" to on exit somehow?
-        writer.close();
     }
 
     @FXML
     protected void onSquareRootButtonClick(){
-        inputString = inputString + "√";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("√");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("") && num2.equals("")){
+            String result = squareRoot(welcomeText.getText().strip());
+            welcomeText.setText(result);
+            num1 = result;
         }
     }
 
     @FXML
     protected void onSquaredButtonClick(){
-        inputString = inputString + "²";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("²");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!num1.equals("") && num2.equals("")){
+            String result = square(welcomeText.getText().strip());
+            welcomeText.setText(result);
+            num1 = result;
         }
     }
 
     public void onThreeButtonClick(ActionEvent actionEvent) {
-        inputString = inputString + "3";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("3");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        numberChoice("3");
     }
 
     public void onOneButtonClick(ActionEvent actionEvent) {
-        inputString = inputString + "1";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("1");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        numberChoice("1");
     }
 
     public void onTwoButtonClick(ActionEvent actionEvent) {
-        inputString = inputString + "2";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("2");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        numberChoice("2");
     }
 
     public void onZeroButtonClick(ActionEvent actionEvent) {
-        inputString = inputString + "0";
-        welcomeText.setText(inputString);
-        try {
-            writer.write("0");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        numberChoice("0");
     }
 }

@@ -92,7 +92,7 @@
                <Font size="26.0" />
             </font>
          </Button>
-         <Button mnemonicParsing="false" onAction="#onNumberTypeToggleButtonClick" prefHeight="76.0" prefWidth="212.0" text="Quaternary/Decimal" GridPane.columnIndex="1" GridPane.columnSpan="2">
+         <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#onNumberTypeToggleButtonClick" prefHeight="76.0" prefWidth="212.0" text="Quaternary" GridPane.columnIndex="1" GridPane.columnSpan="2">
             <font>
                <Font size="18.0" />
             </font>
