@@ -3,7 +3,6 @@ package com.example.quaternarycalculator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import Logic.logic;
 
 import java.io.FileWriter;
 import java.io.IOException;

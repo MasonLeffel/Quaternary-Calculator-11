@@ -1,6 +1,8 @@
-package Tests;
-import Logic.logic;
+package com.example.quaternarycalculator;
+
+import com.example.quaternarycalculator.logic;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 

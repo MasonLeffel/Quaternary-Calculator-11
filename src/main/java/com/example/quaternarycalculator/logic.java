@@ -1,4 +1,4 @@
-package Logic;
+package com.example.quaternarycalculator;
 
 public class logic {
 
