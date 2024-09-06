@@ -18,22 +18,8 @@ public class CalculatorController extends logic {
     private String num2 = "";
     private String operand = "";
 
-    //TODO
-    // when equal pressed, set val to num1
 
     private boolean isNumQuaternary = true;
-
-    private String inputString = " ";
-
-    private FileWriter writer;
-
-    {
-        try {
-            writer = new FileWriter("equations.txt");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     protected void numberChoice(String number){
         if (operand.equals("")){
@@ -43,6 +29,34 @@ public class CalculatorController extends logic {
             num2 += number;
             welcomeText.setText(num2);
         }
+    }
+
+    protected void vibeCheck(){
+        if (isNumQuaternary == false){
+            isNumQuaternary = true;
+            toggleButton.setText("Quaternary");
+        }
+    }
+
+    protected void checkOperand(String result) {
+        if (!num2.equals("")){
+            if (operand.equals("+")){
+                result = add(num1, num2);
+            }
+            if (operand.equals("-")){
+                result = subtract(num1, num2);
+            }
+            if (operand.equals("*")){
+                result = multiply(num1, num2);
+            }
+            if (operand.equals("/")){
+                result = divide(num1, num2);
+            }
+        }
+        num1 = result;
+        num2 = "";
+        operand = "";
+        welcomeText.setText(result);
     }
 
     @FXML
@@ -61,15 +75,17 @@ public class CalculatorController extends logic {
         String newText = "";
         try {
             if (isNumQuaternary) {
+                isNumQuaternary = false;
+                toggleButton.setText("Decimal");
                 newText = String.valueOf(quaternaryToDecimal(welcomeText.getText().strip()));
                 welcomeText.setText(newText);
-                toggleButton.setText("Decimal");
-                isNumQuaternary = false;
+
             } else {
+                isNumQuaternary = true;
+                toggleButton.setText("Quaternary");
                 newText = decimalToQuaternary(Integer.parseInt(welcomeText.getText().strip()));
                 welcomeText.setText(newText);
-                toggleButton.setText("Quaternary");
-                isNumQuaternary = true;
+
             }
         }catch (Exception e){
             System.out.println(e);
@@ -109,12 +125,13 @@ public class CalculatorController extends logic {
     }
 
     @FXML
-    protected void onEqualButtonClick() throws IOException {
-
+    protected void onEqualButtonClick(){
+        checkOperand("");
     }
 
     @FXML
     protected void onSquareRootButtonClick(){
+        vibeCheck();
         if (!num1.equals("") && num2.equals("")){
             String result = squareRoot(welcomeText.getText().strip());
             welcomeText.setText(result);
@@ -132,18 +149,22 @@ public class CalculatorController extends logic {
     }
 
     public void onThreeButtonClick(ActionEvent actionEvent) {
+        vibeCheck();
         numberChoice("3");
     }
 
     public void onOneButtonClick(ActionEvent actionEvent) {
+        vibeCheck();
         numberChoice("1");
     }
 
     public void onTwoButtonClick(ActionEvent actionEvent) {
+        vibeCheck();
         numberChoice("2");
     }
 
     public void onZeroButtonClick(ActionEvent actionEvent) {
+        vibeCheck();
         numberChoice("0");
     }
 }
